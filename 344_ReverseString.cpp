@@ -4,8 +4,9 @@
 using namespace std;
 
 class Solution {
-    public:
-    string reverseString(string s) {
+public:
+    string reverseString(string s) 
+    {
         auto start = s.begin(), end = s.end() - 1;
         while(start < end)
         {

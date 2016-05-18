@@ -6,8 +6,9 @@ using namespace std;
 
 class Solution {
     
-    public:
-    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) 
+    {
         map<int, int> num_tabel; 
         vector<int> result;
         for(auto i: nums1)
