@@ -9,7 +9,11 @@ struct ListNode {
 class Solution {
 public:
 
+<<<<<<< HEAD
     //Solution one: iterative
+=======
+    //Solution one: recursive
+>>>>>>> origin/master
     ListNode * mergeTwoLists(ListNode *l1, ListNode *l2) 
     {
         if(l1 == NULL)
