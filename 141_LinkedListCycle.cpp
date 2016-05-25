@@ -32,4 +32,5 @@ int main(void)
 {
     Solution solution;
     cout << solution.hasCycle(NULL) << endl;
+    return 0;
 }
