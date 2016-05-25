@@ -7,7 +7,8 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices)
     {
-        int min_buy = 2147483647 , max_profit = -2147483648;
+        int min_buy = 2147483647;
+        int max_profit = -2147483648;
         if(prices.size() == 0)
             return 0;
         for(int price: prices)
