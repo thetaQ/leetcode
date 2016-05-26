@@ -24,6 +24,23 @@ public:
         }
         return size - val_cnt;
     }
+    
+    //思路2， 如果当前值等于val，则将末尾的一个数移动过来
+    int removeElement_2(vector<int>& nums, int val)
+    {
+        int i = 0, j = nums.size() - 1;
+        while(i <= j)
+        {
+            if(nums[i] == val)
+            {
+                nums[i] = nums[j--];
+                continue;
+            }
+            i++;
+        }
+        return i;
+    }
+    
 };
 
 int main(void)
