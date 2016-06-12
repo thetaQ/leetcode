@@ -6,7 +6,7 @@ class Solution {
 public:
 
     /*
-    * first solution: iterative
+    * first solution: brute force
     */
     int strStr(string haystack, string needle)
     {
@@ -15,18 +15,17 @@ public:
         if(lenh < lenn)
             return -1;
         int size = lenh - lenn;
-        for(int i = 0; i <= size; ++i)
+        int i, j;
+        for(i = 0; i <= size; ++i)
         {
-            bool exist = true;
-            for(int j = 0; j < lenn; j++)
+            for(j = 0; j < lenn; j++)
             {
                 if(haystack[i+j] != needle[j])
                 {
-                    exist = false;
                     break;
                 }
             }
-            if(exist)
+            if(j == lenn)
             {
                 return i;
             }
@@ -34,6 +33,12 @@ public:
         return -1;
     }
 
+    /*
+    * second solution: KMP
+    */
+    int strStr_KMP(string haystack, string needle)
+    {
 
+    }
 
 };
