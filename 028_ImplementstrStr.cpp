@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -8,10 +9,10 @@ public:
     /*
     * first solution: brute force
     */
-    int strStr(string haystack, string needle)
+    int strStr(string haystack, string pattern)
     {
         int lenh = haystack.size();
-        int lenn = needle.size();
+        int lenn = pattern.size();
         if(lenh < lenn)
             return -1;
         int size = lenh - lenn;
@@ -20,7 +21,7 @@ public:
         {
             for(j = 0; j < lenn; j++)
             {
-                if(haystack[i+j] != needle[j])
+                if(haystack[i+j] != pattern[j])
                 {
                     break;
                 }
@@ -32,13 +33,4 @@ public:
         }
         return -1;
     }
-
-    /*
-    * second solution: KMP
-    */
-    int strStr_KMP(string haystack, string needle)
-    {
-
-    }
-
 };
