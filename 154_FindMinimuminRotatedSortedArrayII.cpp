@@ -7,7 +7,7 @@ class Solution {
 public:
     int helper(vector<int>& nums, int start, int end)
     {
-        if(start == end)
+        if(start >= end)
         {
             return nums[start];
         }
