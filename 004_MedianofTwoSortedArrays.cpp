@@ -5,7 +5,6 @@ using namespace std;
 
 class Solution {
 public:
-    
     double find_kth(int *nums1, int m, int *nums2, int n, int k)
     {
         if(m > n)
@@ -16,6 +15,10 @@ public:
         if(m == 0)
         {
             return nums2[k-1];
+        }
+        if(k == 1)
+        {
+            return min(nums1[0], nums2[0]);
         }
 
         int pa = min(m, k/2);
@@ -36,7 +39,7 @@ public:
         int total_length = m + n;
         if(total_length & 1)
         {
-            return find_kth(nums1, m, nums2, n, (total_length+1)/2);
+            return find_kth(nums1, m, nums2, n, total_length/2 + 1);
         }
         else
         {
