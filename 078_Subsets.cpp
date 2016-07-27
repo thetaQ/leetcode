@@ -30,4 +30,32 @@ public:
         combine(nums, path, 0);
         return result;
     }
+
+
+    //迭代法
+    vector<int> convertIntToSet(vector<int>& nums, int x)
+    {
+        vector<int> set;
+        int index = 0;
+        for(int k = x; k > 0; k >>= 1)
+        {
+            if((k & 1) == 1)
+                set.push_back(nums[index]);
+            index ++;
+        }
+        return set;
+    }
+
+    vector<vector<int> > subsets_iteratively(vector<int>& nums)
+    {
+        sort(nums.begin(), nums.end(), mcmp);
+        vector<vector<int> > result;
+        int max = 1 << nums.size();
+        for(int i = 0; i < max; i++)
+        {
+            vector<int> subset = convertIntToSet(nums, i);
+            result.push_back(subset);
+        }
+        return result;
+    }
 };
