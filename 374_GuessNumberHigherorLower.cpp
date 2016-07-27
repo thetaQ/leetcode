@@ -31,4 +31,33 @@ public:
         }
         return start;
     }
+
+
+    int guessCore(int start, int end)
+    {
+        if(start >= end)
+        {
+            return start;
+        }
+
+        int mid = start + (end - start) / 2;
+        int ret = guess(mid);
+        if(ret > 0)
+        {
+            return guessCore(mid + 1, end);
+        }
+        else if(ret < 0)
+        {
+            return guessCore(start, mid - 1);
+        }
+        else
+        {
+            return mid;
+        }
+    }
+
+    int guessNumber_recursively(int n)
+    {
+        return guessCore(1, n);
+    }
 };
