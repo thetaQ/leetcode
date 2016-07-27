@@ -23,6 +23,23 @@ public:
         return;
     }
 
+    void combine_2(vector<int>& nums, vector<int>&path, int index)
+    {
+        if(index <= nums.size())
+        {
+            vector<int> tmp(path);
+            result.push_back(tmp);
+        }
+        
+        for(int i = index; i < nums.size(); i++)
+        {
+            path.push_back(nums[i]);
+            combine(nums, path, i + 1);
+            path.pop_back();
+        }
+        return;
+    }
+
     vector<vector<int> > subsets(vector<int>& nums)
     {
         sort(nums.begin(), nums.end(), mcmp);
