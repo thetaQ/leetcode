@@ -21,11 +21,15 @@ public:
         {
             if(nums[index] == 0)
             {
-                swap(nums, index, l++);
+                swap(nums, index++, l++);
             }
             else if(nums[index] == 2)
             {
-                swap(nums, index--, r--);
+                swap(nums, index, r--);
+            }
+            else
+            {
+                index ++;
             }
         }
     }
