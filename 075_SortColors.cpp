@@ -16,7 +16,8 @@ public:
     void sortColors(vector<int>& nums) 
     {
         int l = 0, r = nums.size() - 1;
-        for(int index = 0; index < nums.size(); index ++)
+        int index = 0;
+        while(index <= r)
         {
             if(nums[index] == 0)
             {
