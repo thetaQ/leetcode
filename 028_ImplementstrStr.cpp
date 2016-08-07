@@ -33,4 +33,34 @@ public:
         }
         return -1;
     }
+
+    //Sunday 算法
+    int strStr_2(string haystack, string needle)
+    {
+        int hsize = haystack.size();
+        int nsize = needle.size();
+        int next[26] = {0};
+        for(int i = 0; i < 26; ++i)
+            next[i] = nsize + 1;
+        for(int i = 0; i < nsize; ++i)
+            next[needle[i]-'a'] = nsize - i;
+            
+        int pos = 0;
+        while(pos < hsize - nsize + 1)
+        {
+            int i = pos;
+            int j;
+            for(j = 0; j < nsize; ++j, ++i)
+            {
+                if(haystack[i] != needle[j])
+                {
+                    pos += next[haystack[pos+nsize]-'a'];
+                    break;
+                }
+            }
+            if(j == nsize)
+                return pos;
+        }
+        return -1;
+    }
 };
