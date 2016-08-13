@@ -46,4 +46,44 @@ public:
             return false;
         return true;
     }
+
+    bool isPalindromCore(ListNode *head, int length, ListNode **node)
+    {
+        if(head == NULL || length == 0)
+        {
+            *node = NULL;
+            return true;
+        }
+        else if(length == 1)
+        {
+            *node = head->next;
+            return true;
+        }
+        else if(length == 2)
+        {
+            *node = head->next->next;
+            return head->val == head->next->val;
+        }
+        else
+        {
+            bool result = isPalindromCore(head->next, length-2, node);
+            if(result == false || *node == NULL)
+                return result;
+            result = head->val == (*node)->val;
+            *node = (*node)->next;
+            return result;
+        }
+    }
+    bool isPalindrome_2(ListNode *head)
+    {
+        int length = 0;
+        ListNode *p = head;
+        while(p != NULL)
+        {
+            length ++;
+            p = p->next;
+        }
+        ListNode *node = NULL;
+        return isPalindromCore(head, length, &node);
+    }
 };
