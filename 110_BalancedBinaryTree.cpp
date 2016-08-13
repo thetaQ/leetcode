@@ -38,4 +38,27 @@ public:
             return false;
         return isBalanced(root->left) && isBalanced(root->right);        
     }
+
+
+    int check_and_get(TreeNode *root)
+    {
+        if(root == NULL)
+            return 0;
+        int left_height = check_and_get(root->left);
+        if(left_height == -1)
+            return -1;
+        int right_height = check_and_get(root->right);
+        if(right_height == -1)
+            return -1;
+        if(left_height - right_height > 1 || left_height - right_height < -1)
+            return -1;
+        return max(left_height, right_height) + 1;
+    }
+    
+    bool isBalanced_2(TreeNode* root)
+    {
+        if(check_and_get(root) == -1)
+            return false;
+        return true;
+    }
 };
