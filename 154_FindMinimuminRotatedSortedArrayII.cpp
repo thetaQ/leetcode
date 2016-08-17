@@ -29,7 +29,7 @@ public:
             }
             else
             {
-                return helper(nums, start+1, end-1);
+                return helper(nums, start, end-1);
             }
         }
     }
