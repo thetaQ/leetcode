@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
 public:
-    static bool compareNum(pair<int, size_t>& l, pair<int, size_t>& r)
+    static bool compareNum(const pair<int, size_t>& l, const pair<int, size_t>& r)
     {
         return l.first < r.first;
     }
@@ -28,8 +28,8 @@ public:
             int sum = sorted_nums[first].first + sorted_nums[last].first;
             if(sum == target)
             {
-                result.push_back(sorted_nums[first].second);
-                result.push_back(sorted_nums[last].second);
+                result[0] = sorted_nums[first].second;
+                result[1] = sorted_nums[last].second;
                 break;
             }
             else if(sum < target)
