@@ -34,7 +34,6 @@ private:
 
     void reverse(vector<int>& nums, int start, int end)
     {
-        int tmp;
         while(start < end)
         {
             swap(nums, start, end);
