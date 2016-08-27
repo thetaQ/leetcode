@@ -11,6 +11,8 @@ using namespace std;
 };
 class Solution {
 public:
+
+    //BFS
     UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) {
         // write your code here
         if(node == NULL)
@@ -44,5 +46,32 @@ public:
             }
         }
         return cloned;
+    }
+
+    //DFS
+
+    UndirectedGraphNode *cloneGraph_2_core(UndirectedGraphNode *node, 
+        unordered_map<UndirectedGraphNode *, UndirectedGraphNode *>& htable)
+    {
+        if(node == NULL)
+            return NULL;
+        if(htable.find(node) != htable.end())
+        {
+            return htable[node];
+        }
+        UndirectedGraphNode *new_node = new UndirectedGraphNode(node->label);
+        htable[node] = new_node;
+        for(auto neighbor: node->neighbors)
+        {
+            UndirectedGraphNode *clone_neighbor = cloneGraph_2_core(neighbor, htable);
+            new_node->neighbors.push_back(clone_neighbor);
+        }
+        return new_node;
+    }
+    
+    UndirectedGraphNode *cloneGraph_2(UndirectedGraphNode *node)
+    {
+        unordered_map<UndirectedGraphNode *, UndirectedGraphNode *> htable;
+        return cloneGraph_2_core(node, htable);
     }
 };
