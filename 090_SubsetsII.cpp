@@ -10,7 +10,7 @@ public:
         return a < b;
     }
 
-    void combine(vector<int>&nums, vector<int>&path, int index)
+    void combine(vector<vector<int> >& result, vector<int>&nums, vector<int>&path, int index)
     {
         if(index <= nums.size())
         {
@@ -23,7 +23,7 @@ public:
             if(i != index && nums[i] == nums[i - 1])
                 continue;
             path.push_back(nums[i]);
-            combine(nums, path, i + 1);
+            combine(result, nums, path, i + 1);
             path.pop_back();
         }
         return;
@@ -32,9 +32,10 @@ public:
 
     vector<vector<int> > subsetsWithDup(vector<int>& nums)
     {
+        vector<vector<int> > result;
         vector<int> path;
         sort(nums.begin(), nums.end(), cmp);
-        combine(nums, path, 0);
+        combine(result, nums, path, 0);
         return result;
     }
 };
