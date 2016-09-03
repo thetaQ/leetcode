@@ -62,4 +62,28 @@ public:
         return slow;
     }
 
+    /* 方法四：二分查找 */
+    int findDuplicate_4(vector<int>& nums)
+    {
+        int start = 0, end = nums.size() - 1;
+        while(start <= end)
+        {
+            int cnt = 0;
+            int mid = start + (end - start) / 2;
+            for(auto a: nums)
+            {
+                if(a <= mid)
+                    cnt ++;
+            }
+            if(cnt <= mid)
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+        return start;
+    }
 };
