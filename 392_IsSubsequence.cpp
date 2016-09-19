@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -18,5 +19,31 @@ public:
             t_index ++;
         }
         return s_index == s.size();
+    }
+
+
+    //动态规划法，内存溢出
+    bool isSubsequence_2(string s, string t)
+    {
+        if(s.size() == 0)
+            return true;
+        if(t.size() == 0)
+            return false;
+        vector<vector<bool>> dp(s.size() + 1, vector<bool>(t.size() + 1));
+        for(int i = 0; i < t.size() + 1; i ++)
+        {
+            dp[0][i] = true;
+        }
+        for(int i = 1; i <= s.size(); i++)
+        {
+            for(int j = 1; j <= t.size(); j++)
+            {
+                if(s[i - 1] == t[j - 1])
+                    dp[i][j] = dp[i-1][j-1];
+                else
+                    dp[i][j] = dp[i][j-1];
+            }
+        }
+        return dp[s.size()][t.size()];
     }
 };
